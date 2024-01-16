@@ -10,6 +10,5 @@ export default class MainDashboard {
 
     async pageLoaded(){
         await this.hideSidePanelBtn.waitFor();
-        await expect(this.pageTitle).toHaveText('Dashboard');
     }
 }

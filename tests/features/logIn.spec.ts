@@ -10,7 +10,6 @@ test.describe('Log in test suite', () => {
         const mainDashboard = new MainDashboard(page);
 
         await loginPage.goTo();
-        await loginPage.pageLoaded();
         await loginPage.fillUsername(userName);
         await loginPage.fillPassword(userPwd);
         await loginPage.logIn();

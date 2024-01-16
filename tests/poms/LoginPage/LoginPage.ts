@@ -10,9 +10,9 @@ export default class LoginPage {
     constructor(private page: Page){}
 
     async goTo(){
-        this.page.goto(baseURL!);
+        await this.page.goto(baseURL!);
         await this.pageLoaded();
-        this.page.waitForLoadState("domcontentloaded");
+        await this.page.waitForLoadState("domcontentloaded");
 
     }
 
@@ -20,16 +20,10 @@ export default class LoginPage {
         await this.credentials.waitFor();
         await this.loginBtn.waitFor();
     }
-
-    async fillUsername(username: string){
-        await this.userName.fill(username)
-    }
-
-    async fillPassword(pwd: string){
-        await this.password.fill(pwd)
-    }
         
-    async logIn(){
+    async logIn(username:string, pwd: string){
+        await this.userName.fill(username);
+        await this.password.fill(pwd);
         await this.loginBtn.click();
     }
 }
