@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 import LoginPage from '../poms/LoginPage/LoginPage';
 import MainDashboard from '../poms/MainDashboard/MainDashboard';
-import { userName, userPwd } from '../data';
+import { USER_NAME, USER_PWD } from '../data';
 
 
 test.describe('Log in test suite', () => {
@@ -10,9 +10,7 @@ test.describe('Log in test suite', () => {
         const mainDashboard = new MainDashboard(page);
 
         await loginPage.goTo();
-        await loginPage.fillUsername(userName);
-        await loginPage.fillPassword(userPwd);
-        await loginPage.logIn();
+        await loginPage.logIn(USER_NAME, USER_PWD);
 
         await mainDashboard.pageLoaded();
     } )
