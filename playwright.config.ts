@@ -5,32 +5,27 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: 2,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   use: {
     baseURL: 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login',
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    headless: true,
+    screenshot: 'only-on-failure',
   },
 
   projects: [
     {
+      name:'firefox',
+      use: {... devices['Desktop Firefox']}
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    }
   ],
   timeout: 30000,
   globalTimeout: 600000,
