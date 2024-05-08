@@ -24,7 +24,7 @@ const test = base.extend<{
 });
 
 test.describe('Visual comparision tests', () => {
-    test('Check Recruitment section', async ({loginPage, mainDashboard, recruitmentPage}) => {
+    test.only('Check Recruitment section', async ({loginPage, mainDashboard, recruitmentPage}) => {
         await loginPage.logIn(USER_NAME, USER_PWD);
         await mainDashboard.pageLoaded();
         await mainDashboard.goToRecruitmentSection();
@@ -32,4 +32,4 @@ test.describe('Visual comparision tests', () => {
         await expect(recruitmentPage.pageTitle).toHaveText(recruitmentPageTitle);
     }
 )
-})
+});

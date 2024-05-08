@@ -4,7 +4,7 @@ export default class MainDashboard {
     readonly pageTitle = this.page.locator('.oxd-topbar-header-breadcrumb');
     readonly sidePanel = this.page.locator('.oxd-sidepanel');
     readonly hideSidePanelBtn = this.page.locator('[role="none"]');
-    readonly recruitmentBtn = this.page.getByText('Recruitment');
+    readonly recruitmentSectionBtn = this.page.getByText('Recruitment');
 
 
     constructor(private page: Page){};
@@ -14,6 +14,6 @@ export default class MainDashboard {
     }
 
     async goToRecruitmentSection(){
-        await this.recruitmentBtn.click();
+        await this.recruitmentSectionBtn.click();
     }
 }
