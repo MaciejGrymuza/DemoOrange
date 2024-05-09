@@ -41,7 +41,7 @@ test.describe('Visual comparision tests', () => {
         expect(screenshotRecr).toMatchSnapshot();
     })
     
-    test.only('Check PIM section table', async ({loginPage, mainDashboard, pimPage}) => {
+    test('Check PIM section table', async ({loginPage, mainDashboard, pimPage}) => {
         await loginPage.logIn(USER_NAME, USER_PWD);
         await mainDashboard.pageLoaded();
         await mainDashboard.goToPIMSection();
