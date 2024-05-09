@@ -16,7 +16,19 @@ export default defineConfig({
     headless: true,
     screenshot: 'only-on-failure',
   },
-
+  expect: {
+    timeout: 10000,
+    toMatchSnapshot: {
+        threshold: 0.2,
+        maxDiffPixelRatio: 0.02,
+    },
+    toHaveScreenshot: {
+        maxDiffPixels: 300,
+        threshold: 0.2,
+        maxDiffPixelRatio: 0.1,
+        animations: 'disabled',
+    }
+  },
   projects: [
     {
       name:'firefox',
