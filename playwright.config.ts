@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  retries: 2,
+  retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -16,7 +16,19 @@ export default defineConfig({
     headless: true,
     screenshot: 'only-on-failure',
   },
-
+  expect: {
+    timeout: 10000,
+    toMatchSnapshot: {
+        threshold: 0.2,
+        maxDiffPixelRatio: 0.02,
+    },
+    toHaveScreenshot: {
+        maxDiffPixels: 300,
+        threshold: 0.2,
+        maxDiffPixelRatio: 0.1,
+        animations: 'disabled',
+    }
+  },
   projects: [
     {
       name:'firefox',

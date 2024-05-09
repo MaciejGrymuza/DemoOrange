@@ -5,6 +5,7 @@ export default class MainDashboard {
     readonly sidePanel = this.page.locator('.oxd-sidepanel');
     readonly hideSidePanelBtn = this.page.locator('[role="none"]');
     readonly recruitmentSectionBtn = this.page.getByText('Recruitment');
+    readonly pimSectionBtn = this.page.getByText('PIM');
 
 
     constructor(private page: Page){};
@@ -15,5 +16,9 @@ export default class MainDashboard {
 
     async goToRecruitmentSection(){
         await this.recruitmentSectionBtn.click();
+    }
+
+    async goToPIMSection(){
+        await this.pimSectionBtn.click();
     }
 }
